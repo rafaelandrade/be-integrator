@@ -50,6 +50,7 @@
     "express-http-context": "1.2.4",
     "express-promise-router": "3.0.3",
     "faker": "5.5.3",
+    "hubspot": "2.3.14",
     "jwt-simple": "0.5.6",
     "lodash": "4.17.21",
     "madge": "4.0.1",

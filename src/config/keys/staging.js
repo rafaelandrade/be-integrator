@@ -8,5 +8,6 @@ module.exports = {
     adminToken: process.env.STAGING_ADMIN_FULL_TOKEN,
     healthToken: process.env.STAGING_HEALTH_TOKEN
   },
-  coralogixKey: process.env.STAGING_CORALOGIX_KEY
+  coralogixKey: process.env.STAGING_CORALOGIX_KEY,
+  hubspotKey: process.env.STAGING_HUBSPOT_KEY
 }

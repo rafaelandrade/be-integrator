@@ -2,7 +2,7 @@ const { NODE_ENV } = process.env
 
 switch (NODE_ENV) {
   case 'test':
-    module.exports = require('./test')
+    module.exports = require('./staging')
     break
   case 'staging':
     module.exports = require('./staging')
@@ -11,6 +11,6 @@ switch (NODE_ENV) {
     module.exports = require('./production')
     break
   default:
-    module.exports = require('./test')
+    module.exports = require('./staging')
     break
 }
