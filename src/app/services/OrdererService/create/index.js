@@ -7,10 +7,10 @@ const createOrderer = async () => {
   try {
     const response = await hubspot.deals.create({
       properties: [
-        { name: 'dealname', value: 'batata' },
-        { name: 'dealstage', value: hubspotConstants.reviewOpix },
-        { name: 'numero_do_pedido', value: 222 },
-        { name: 'pipeline', value: 'default' },
+        formatPropertyHubspot({ name: 'dealName', value: 'batata' }),
+        formatPropertyHubspot({ name: 'dealStage', value: hubspotConstants.reviewOpix }),
+        formatPropertyHubspot({ name: 'ordererNumber', value: 222 }),
+        formatPropertyHubspot({ name: 'pipeline', value: 'default' }),
       ],
     })
 

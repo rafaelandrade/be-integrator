@@ -2,6 +2,6 @@
 const router = require('express-promise-router')()
 const { ordererController } = require('../../../app/controllers')
 
-router.post('/create', ordererController.create)
+router.post('/create', ordererController.createOrUpdate)
 
 module.exports = router
