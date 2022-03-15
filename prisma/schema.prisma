@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,39 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Orderer {
+  id              Int                  @id(map: "orderer_pk") @default(autoincrement())
+  emailClient     String?              @db.VarChar
+  dateTatto       DateTime?            @db.Date
+  urlImage        String?              @db.VarChar
+  bodyPlaceTatto  String?              @db.VarChar
+  description     String?              @db.VarChar
+  HubspotId       Int?
+  ordererStatus   type_orderer_status?
+  createdAt       DateTime?            @db.Date
+  updatedAt       DateTime?            @db.Date
+  OrdererCanceled OrdererCanceled[]
+}
+
+model OrdererCanceled {
+  id        Int       @id(map: "orderercanceled_pk") @default(autoincrement())
+  OrdererId Int
+  reason    String?   @db.VarChar
+  createdAt DateTime? @db.Date
+  updatedAt DateTime? @db.Date
+  Orderer   Orderer   @relation(fields: [OrdererId], references: [id], onDelete: Cascade, map: "orderercanceled_orderer_id_fk")
+}
+
+enum type_orderer_status {
+  initiated
+  waiting_user
+  waiting_admin
+  waiting_payment
+  drawning
+  review_user
+  approved
+  finish
+  canceled
 }

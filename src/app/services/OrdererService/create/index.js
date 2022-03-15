@@ -3,18 +3,19 @@ const { hubspotConstants } = require('../../../constants')
 
 const formatPropertyHubspot = require('../../../../helpers/formatPropertyHubspot')
 
-const createOrderer = async () => {
+const createOrderer = async (email) => {
   try {
+    const orderNumber = 1
+
     const response = await hubspot.deals.create({
       properties: [
-        formatPropertyHubspot({ name: 'dealName', value: 'batata' }),
+        formatPropertyHubspot({ name: 'dealName', value: `Novo pedido: Nro ${orderNumber}` }),
         formatPropertyHubspot({ name: 'dealStage', value: hubspotConstants.reviewOpix }),
         formatPropertyHubspot({ name: 'ordererNumber', value: 222 }),
         formatPropertyHubspot({ name: 'pipeline', value: 'default' }),
       ],
     })
 
-    console.log(response.dealId)
     return response.dealId
   } catch (error) {
     console.log(error)
